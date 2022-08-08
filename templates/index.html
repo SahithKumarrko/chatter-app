@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Global</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="HTML5 website template">
+  <meta name="keywords" content="global, template, html, sass, jquery, chat">
+  <meta name="author" content="Sahith Kumar">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+  <script>
+     if(window.localStorage.getItem("uname")!=null){
+    document.location.href="/chat?uname="+window.localStorage.getItem("uname");
+  }
+  </script>
+  <style>
+    .outer-nav li:nth-child(1){
+  border-bottom:solid 1px;
+}
+
+    #register-btn{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+  </style>
+</head>
+<body>
+
+<!-- notification for small viewports and landscape oriented smartphones -->
+<div class="device-notification">
+  <a class="device-notification--logo" href="#0">
+    <img src="./static/img/logo.png" alt="Global">
+    <p>Global</p>
+  </a>
+  <p class="device-notification--message">Global has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
+</div>
+
+<div class="perspective effect-rotate-left">
+  <div class="container"><div class="outer-nav--return"></div>
+    <div id="viewport" class="l-viewport">
+      <div class="l-wrapper">
+        <header class="header">
+          <a class="header--logo" href="#0">
+            <img src="./static/img/logo.png" alt="Global">
+            <p>Global</p>
+          </a>
+          <div class="header--nav-toggle">
+            <span></span>
+          </div>
+        </header>
+        <nav class="l-side-nav">
+          <ul class="side-nav">
+            <li class="is-active"><span>Home</span></li>
+            <li><span>Login / Register</span></li>
+            <!-- <li><span>Register</span></li> -->
+          </ul>
+        </nav>
+        <ul class="l-main-content main-content">
+          <li class="l-section section section--is-active">
+            <div class="intro">
+              <div class="intro--banner">
+                <h1>Your next<br>interactive<br>experience</h1>
+                <button class="cta">Login / Register
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+                  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+                  </g>
+                  </svg>
+                  <span class="btn-background"></span>
+                </button>
+                <img src="./static/img/introduction-visual2.png" alt="Welcome">
+              </div>
+            </div>
+          </li>
+          <li class="l-section section">
+            <div class="about">
+                <div class="login-page">
+                    <div class="form">
+                      <p style="color: red" id="error"></p>
+                      <form class="register-form">
+                        <input class="input" id="r-un" type="text" placeholder="User Name"/>
+                        <input class="input" id="r-pswd" type="password" placeholder="Password"/>
+                        <input class="input" id="r-cpswd" type="password" placeholder="Confirm Passsword"/>
+                        <input onmouseover="cc1()" onmouseout="cc2()" value="Create" style="background: #4CAF50;;color: #FFFFFF;" type="button" class="but" id="register-btn"/>
+                        <!-- <button class="but" id="register-btn">Create</button> -->
+                        <p class="message">Already registered? <a class="f-nxt" href="#">Sign In</a></p>
+                      </form>
+                      <form class="login-form">
+                        <input class="input" id="l-un" type="text" placeholder="User Name"/>
+                        <input class="input" id="l-pswd" type="password" placeholder="Password"/>
+                        <input onmouseover="cc1()" onmouseout="cc2()" value="Login" style="background: #4CAF50;color: #FFFFFF" type="button" class="but" id="login-btn"/>
+                        <!-- <button class="but" id="login-btn">Login</button> -->
+                        <p class="message">Not registered? <a class="f-nxt" href="#">Create an account</a></p>
+                      </form>
+                    </div>
+                  </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul class="outer-nav">
+    <li class="is-active">Home</li>
+    <hr>
+    <li>Login / Register</li>
+    
+  </ul>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="./static/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
+<script src="./static/js/functions-min.js"></script>
+<script>
+  $('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+</script>
+
+<script>
+  var error=document.getElementById("error");
+  var http = new XMLHttpRequest();
+
+ 
+
+  function store(uname){
+    if(window.localStorage.getItem("uname")==null){
+      window.localStorage.setItem("uname",uname);
+    }
+  }
+
+  function cc1(){
+    document.getElementById("login-btn").style.background="#43A047";
+  }
+
+  function cc2(){
+    document.getElementById("login-btn").style.background="#4CAF50";
+  }
+  document.getElementById("login-btn").addEventListener("click",function(){
+    var un=document.getElementById("l-un").value;
+    var pswd=document.getElementById("l-pswd").value;
+    if(un=="" && pswd==""){
+      error.innerHTML="User Name and Password are empty";
+    }
+    else if(un==""){
+      error.innerHTML="User Name is empty";
+    }
+    else if(pswd==""){
+      error.innerHTML="Password is empty";
+    }else{
+      console.log("loging");
+      var url = "validate_user?uname="+un+"&pswd="+pswd;
+      http.open('GET', url, true);
+      http.onreadystatechange = function() {
+      if(http.readyState==4 && http.status==200){
+        if(http.responseText=="true"){
+          store(un);
+          document.location.href="/chat?uname="+un;
+
+        }else{
+          error.innerHTML="No user found";
+        }
+      }
+      }
+      http.send();
+    }
+  });
+
+  
+  document.getElementById("register-btn").addEventListener("click",function(){
+    error.innerHTML="";
+    var un=document.getElementById("r-un").value;
+    var pswd=document.getElementById("r-pswd").value;
+    var cpswd=document.getElementById("r-cpswd").value;
+    if(un=="" && pswd==""){
+      error.innerHTML="User Name and Password are empty";
+    }
+    else if(un==""){
+      error.innerHTML="User Name is empty";
+    }
+    else if(pswd==""){
+      error.innerHTML="Password is empty";
+    }
+    else if(cpswd==""){
+      error.innerHTML="Confirm Password is empty";
+    }
+    else{
+      if(pswd==cpswd){
+        console.log("registering");
+        var url = "check_user?uname="+un+"&pswd="+pswd;
+        http.open('GET', url, true);
+        http.onreadystatechange = function() {
+        if(http.readyState==4 && http.status==200){
+          if(http.responseText=="true"){
+            error.innerHTML="User Name is already taken";
+          }else{
+            store(un);
+            document.location.href="/chat?uname="+un;
+            console.log("registering");
+          }
+        }
+        }
+        http.send();
+      }else{
+        error.innerHTML="Passwords do not match"
+      }
+    }
+  });
+
+  document.getElementsByClassName("f-nxt")[0].addEventListener("click",function(){
+    error.innerHTML="";
+  });
+  document.getElementsByClassName("f-nxt")[1].addEventListener("click",function(){
+    error.innerHTML="";
+  });
+</script>
+</body>
+</html>

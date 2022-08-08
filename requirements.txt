@@ -1,0 +1,13 @@
+Flask==0.12.2
+Flask-SocketIO==4.2.1
+psycopg2
+pytz
+# mysql-connector
+# mysqlclient
+eventlet
+gunicorn==18.0.0
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+Werkzeug==0.15.4
+wheel==0.33.4
